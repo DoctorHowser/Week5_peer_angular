@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="personApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+
+    <script type="text/javascript" src="vendors/angular.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/app.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>It's alive!</h1>
+        <div ng-controller="LoadController">
+            <div class="well col-md-12 text-center">
+                <h2>Insert a Classmate!</h2>
+                <form>
+                    <input ng-model="person.name" type="text" placeholder="Name">
+                    <input ng-model="person.location" type="text" placeholder="Location">
+                    <input ng-model="person.favorite_number" type="number" placeholder="Favorite Number">
+                </form>
+                <div class="btn btn-success" ng-click="addPerson(person)" >Submit!</div>
+            </div>
+            <div class="well text-center">
+                <div class="btn btn-info" ng-click="classroom.sortBy('name', reverse)">Sort by Name A-Z</div>
+                <div class="btn btn-info" ng-click="classroom.sortBy('-name', reverse)">Sort by Name Z-A</div>
+                <div class="btn btn-info" ng-click="reverse=!reverse;classroom.sortBy('location', reverse)">Sort by Location</div>
+                <div class="btn btn-info" ng-click="reverse=!reverse;classroom.sortBy('favorite_number', reverse)">Sort by Favorite Number</div>
+            </div>
+            <div ng-repeat="person in classroom.people">
+                    <profile-info info="person" doer="classroom.deletePerson($index)"></profile-info>
+
+            </div>
+
+
+
+
+
+            <!-- End of LoadController-->
+        </div>
+    </div>
+</body>
+</html>
